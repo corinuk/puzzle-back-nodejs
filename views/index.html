@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puzzle backend</title>
+  </head>
+  <body>
+    <h1>Puzzle Backend</h1>
+    <form
+      action="/form_receiver"
+      method="post"
+      enctype="multipart/form-data"
+      style="margin-bottom: 20px"
+    >
+      <input type="file" name="foodImg" accept="image/*" required />
+      <br />
+      <input type="text" name="menu" placeholder="메뉴 이름" required />
+      <br />
+      <input type="text" name="place" placeholder="가게 이름" required />
+      <br />
+      <input type="text" name="address" placeholder="가게 주소" required />
+      <br />
+      <input type="number" name="price" placeholder="원래 가격" required />
+      <br />
+      <input
+        type="number"
+        name="saledPrice"
+        placeholder="할인된 가격"
+        required
+      />
+      <br />
+      <input type="text" name="deadline" placeholder="마감 시간" required />
+      <br />
+      <input type="submit" name="upload" value="올리기" />
+    </form>
+    {% for item in id %}
+    <div style="display: flex">
+      <img
+        src="{{fileURL[loop.index0]}}"
+        alt="foodImg"
+        style="width: 150px; height: 150px"
+      />
+      <div>
+        <div>id : {{id[loop.index0]}}</div>
+        <div>메뉴 : {{menu[loop.index0]}}</div>
+        <div>가게 : {{place[loop.index0]}}</div>
+        <div>주소 : {{address[loop.index0]}}</div>
+        <div>원가 : {{price[loop.index0]}}</div>
+        <div>할인가 : {{saledPrice[loop.index0]}}</div>
+        <div>마감시간 : {{deadline[loop.index0]}}</div>
+        <div>createdAt : {{createdAt[loop.index0]}}</div>
+      </div>
+      <input
+        type="button"
+        value="delete"
+        style="margin-left: 10px; height: 50px"
+      />
+    </div>
+    <br />
+    {% endfor %}
+  </body>
+</html>
