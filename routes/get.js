@@ -5,11 +5,14 @@ const { dbService } = require("../fb");
 const { collection, query, getDocs } = require("firebase/firestore");
 
 const app = express();
+
+//*******res.render 하려면 항상 nunjucks config 해줘야함*******
 nunjucks.configure("views", {
   express: app,
   watch: true,
 });
 app.set("view engine", "html");
+//********************************************************
 
 app.get("/", async (req, res) => {
   const q = query(collection(dbService, "foods"));
