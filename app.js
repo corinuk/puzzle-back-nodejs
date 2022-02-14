@@ -26,6 +26,7 @@ app.use(express.static(__dirname + "/public"));
 
 //get
 app.use("/", getRouter);
+app.get("/delete-item", (req, res) => {});
 
 //post
 app.use("/upload", postRouter);

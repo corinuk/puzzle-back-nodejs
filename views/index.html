@@ -36,22 +36,6 @@
       <br />
       <input type="submit" name="upload" value="올리기" />
     </form>
-    {% for item in id %}
-    <div class="items-div">
-      <img src="{{fileURL[loop.index0]}}" alt="foodImg" class="food-img" />
-      <div>
-        <div>id : {{id[loop.index0]}}</div>
-        <div>메뉴 : {{menu[loop.index0]}}</div>
-        <div>가게 : {{place[loop.index0]}}</div>
-        <div>주소 : {{address[loop.index0]}}</div>
-        <div>원가 : {{price[loop.index0]}}</div>
-        <div>할인가 : {{saledPrice[loop.index0]}}</div>
-        <div>마감시간 : {{deadline[loop.index0]}}</div>
-        <div>createdAt : {{createdAt[loop.index0]}}</div>
-      </div>
-      <input type="button" value="delete" class="delete-btn" />
-    </div>
-    <br />
-    {% endfor %}
+    {% block content %} {% endblock %} {% block script %} {% endblock %}
   </body>
 </html>

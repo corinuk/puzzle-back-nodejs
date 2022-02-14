@@ -1,0 +1,20 @@
+{% extends 'index.html' %} {% block content %} {% for item in id %}
+<div class="items-div">
+  <img src="{{fileURL[loop.index0]}}" alt="foodImg" class="food-img" />
+  <div>
+    <input hidden value="{{id[loop.index0]}}" />
+    <div>id : {{id[loop.index0]}}</div>
+    <div>메뉴 : {{menu[loop.index0]}}</div>
+    <div>가게 : {{place[loop.index0]}}</div>
+    <div>주소 : {{address[loop.index0]}}</div>
+    <div>원가 : {{price[loop.index0]}}</div>
+    <div>할인가 : {{saledPrice[loop.index0]}}</div>
+    <div>마감시간 : {{deadline[loop.index0]}}</div>
+    <div>createdAt : {{createdAt[loop.index0]}}</div>
+  </div>
+  <div class="delete-div">
+    <a href="/delete-item" class="delete-btn">delete</a>
+  </div>
+</div>
+<br />
+{% endfor %} {% endblock %}

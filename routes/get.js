@@ -50,7 +50,7 @@ app.get("/", async (req, res) => {
     createdAt.push(foodArr[i].createdAt);
   }
 
-  res.render("index", {
+  res.render("items", {
     fileURL,
     id,
     menu,
