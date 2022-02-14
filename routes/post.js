@@ -24,8 +24,14 @@ app.post("/", upload.single("foodImg"), async (req, res) => {
     const deadline = req.body.deadline;
     const createdAt = Date.now();
     const fileRef = ref(storageService, `/images/${createdAt}`);
-    const response = await uploadString(fileRef, foodImg, "base64");
+    const convert_to_dataURL = `data:image/jpeg;base64,${foodImg}`;
+    const response = await uploadString(
+      fileRef,
+      convert_to_dataURL,
+      "data_url"
+    );
     const fileURL = await getDownloadURL(response.ref);
+
     await addDoc(collection(dbService, "foods"), {
       fileURL,
       menu,
