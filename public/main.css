@@ -11,9 +11,6 @@
   width: 150px;
   height: 150px;
 }
-.delete-div {
-  margin-top: 10px;
-}
 .delete-btn {
   text-decoration: none;
   margin-left: 10px;
@@ -21,4 +18,6 @@
   border-radius: 5px;
   padding: 10px;
   color: red;
+  background-color: white;
+  cursor: pointer;
 }

@@ -3,7 +3,8 @@
   <img src="{{fileURL[loop.index0]}}" alt="foodImg" class="food-img" />
   <div>
     <input hidden value="{{id[loop.index0]}}" />
-    <div>id : {{id[loop.index0]}}</div>
+    <input hidden value="{{createdAt[loop.index0]}}" />
+    <div id="id">id : {{id[loop.index0]}}</div>
     <div>메뉴 : {{menu[loop.index0]}}</div>
     <div>가게 : {{place[loop.index0]}}</div>
     <div>주소 : {{address[loop.index0]}}</div>
@@ -13,8 +14,29 @@
     <div>createdAt : {{createdAt[loop.index0]}}</div>
   </div>
   <div class="delete-div">
-    <a href="/delete-item?id={{id[loop.index0]}}" class="delete-btn">delete</a>
+    <input type="button" value="delete" class="delete-btn" />
+    <!-- <a
+      href="/delete-item?id={{id[loop.index0]}}&ca={{createdAt[loop.index0]}}"
+      class="delete-btn"
+      >delete</a
+    > -->
   </div>
 </div>
 <br />
-{% endfor %} {% endblock %}
+{% endfor %} {% endblock %} {% block script %}
+<script>
+  const deleteBtn = document.querySelectorAll(".delete-btn");
+  const confirmDel = (event) => {
+    const id = event.target.parentNode.parentNode.children[1].children[0].value;
+    const ca = event.target.parentNode.parentNode.children[1].children[1].value;
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      location.href = `/delete-item?id=${id}&ca=${ca}`;
+    } else {
+      return;
+    }
+  };
+  deleteBtn.forEach((event) => {
+    event.addEventListener("click", confirmDel);
+  });
+</script>
+{% endblock %}
