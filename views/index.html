@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Puzzle backend</title>
+    <link rel="stylesheet" href="/main.css" />
   </head>
   <body>
     <h1>Puzzle Backend</h1>
@@ -37,11 +38,7 @@
     </form>
     {% for item in id %}
     <div style="display: flex">
-      <img
-        src="{{fileURL[loop.index0]}}"
-        alt="foodImg"
-        style="width: 150px; height: 150px"
-      />
+      <img src="{{fileURL[loop.index0]}}" alt="foodImg" class="food-img" />
       <div>
         <div>id : {{id[loop.index0]}}</div>
         <div>메뉴 : {{menu[loop.index0]}}</div>
@@ -52,11 +49,7 @@
         <div>마감시간 : {{deadline[loop.index0]}}</div>
         <div>createdAt : {{createdAt[loop.index0]}}</div>
       </div>
-      <input
-        type="button"
-        value="delete"
-        style="margin-left: 10px; height: 50px"
-      />
+      <input type="button" value="delete" class="delete-btn" />
     </div>
     <br />
     {% endfor %}

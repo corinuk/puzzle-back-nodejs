@@ -66,7 +66,6 @@ app.get("/", async (req, res) => {
   let saledPrice = [];
   let deadline = [];
   let createdAt = [];
-  console.log(id);
 
   for (let i = 0; i < foodArr.length; i++) {
     fileURL.push(foodArr[i].fileURL);
