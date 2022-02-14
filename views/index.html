@@ -13,7 +13,7 @@
       action="/form_receiver"
       method="post"
       enctype="multipart/form-data"
-      style="margin-bottom: 20px"
+      class="upload-form"
     >
       <input type="file" name="foodImg" accept="image/*" required />
       <br />
@@ -37,7 +37,7 @@
       <input type="submit" name="upload" value="올리기" />
     </form>
     {% for item in id %}
-    <div style="display: flex">
+    <div class="items-div">
       <img src="{{fileURL[loop.index0]}}" alt="foodImg" class="food-img" />
       <div>
         <div>id : {{id[loop.index0]}}</div>

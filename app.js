@@ -41,6 +41,7 @@ nunjucks.configure("views", {
 //미들웨어
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + "/public"));
 
 //get
 app.get("/", async (req, res) => {
