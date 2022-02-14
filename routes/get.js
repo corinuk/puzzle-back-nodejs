@@ -15,6 +15,7 @@ app.set("view engine", "html");
 //********************************************************
 
 app.get("/", async (req, res) => {
+  // DB에서 data 불러옴.
   const q = query(collection(dbService, "foods"));
   const querySnapshot = await getDocs(q);
   let foodArr = [];
@@ -28,6 +29,8 @@ app.get("/", async (req, res) => {
       return b.createdAt - a.createdAt;
     });
   });
+
+  // 변수 설정
   let fileURL = [];
   let id = [];
   let menu = [];
@@ -38,6 +41,7 @@ app.get("/", async (req, res) => {
   let deadline = [];
   let createdAt = [];
 
+  // 위의 변수에 item 담기
   for (let i = 0; i < foodArr.length; i++) {
     fileURL.push(foodArr[i].fileURL);
     id.push(foodArr[i].id);
