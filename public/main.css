@@ -4,6 +4,15 @@
 .upload-form {
   margin-bottom: 20px;
 }
+.img-output {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+.hidden {
+  display: none;
+}
 .items-div {
   display: flex;
 }

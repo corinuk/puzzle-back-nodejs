@@ -15,7 +15,15 @@
       enctype="multipart/form-data"
       class="upload-form"
     >
-      <input type="file" name="foodImg" accept="image/*" required />
+      <img id="output" class="img-output hidden" />
+      <br />
+      <input
+        type="file"
+        name="foodImg"
+        accept="image/*"
+        onchange="loadFile(event)"
+        required
+      />
       <br />
       <input type="text" name="menu" placeholder="메뉴 이름" required />
       <br />
@@ -36,6 +44,23 @@
       <br />
       <input type="submit" name="upload" value="올리기" />
     </form>
-    {% block content %} {% endblock %} {% block script %} {% endblock %}
+    {% block content %} {% endblock %}
+    <script>
+      const loadFile = (event) => {
+        try {
+          const reader = new FileReader();
+          reader.onload = function () {
+            let output = document.getElementById("output");
+            output.src = reader.result;
+            output.classList.remove("hidden");
+          };
+          reader.readAsDataURL(event.target.files[0]);
+        } catch (err) {
+          const output = document.getElementById("output");
+          output.classList.add("hidden");
+        }
+      };
+    </script>
+    {% block script %} {% endblock %}
   </body>
 </html>
