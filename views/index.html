@@ -18,6 +18,7 @@
       <img id="output" class="img-output hidden" />
       <br />
       <input
+        class="form-input"
         type="file"
         name="foodImg"
         accept="image/*"
@@ -25,22 +26,73 @@
         required
       />
       <br />
-      <input type="text" name="menu" placeholder="메뉴 이름" required />
-      <br />
-      <input type="text" name="place" placeholder="가게 이름" required />
-      <br />
-      <input type="text" name="address" placeholder="가게 주소" required />
-      <br />
-      <input type="number" name="price" placeholder="원래 가격" required />
+      <input
+        class="form-input"
+        type="text"
+        name="menu"
+        placeholder="메뉴 이름"
+        required
+      />
       <br />
       <input
+        class="form-input"
+        type="text"
+        name="place"
+        placeholder="가게 이름"
+        required
+      />
+      <br />
+      <input
+        class="form-input"
+        type="text"
+        name="address"
+        placeholder="가게 주소"
+        required
+      />
+      <br />
+      <input
+        class="form-input"
+        type="number"
+        name="price"
+        placeholder="원래 가격"
+        required
+      />
+      <br />
+      <input
+        class="form-input"
         type="number"
         name="saledPrice"
         placeholder="할인된 가격"
         required
       />
       <br />
-      <input type="text" name="deadline" placeholder="마감 시간" required />
+      <!-- <input type="text" name="deadline" placeholder="마감 시간" required />
+      <br /> -->
+      <label for="hours" class="deadline">마감시간</label>
+      <br />
+      <select name="ampm">
+        <option>오전</option>
+        <option selected>오후</option>
+      </select>
+      <input
+        id="deadline-hours"
+        type="number"
+        name="deadlineHours"
+        placeholder="시"
+        max="12"
+        maxlength="2"
+        required
+      />
+      :
+      <input
+        type="number"
+        name="deadlineMinutes"
+        placeholder="분"
+        max="59"
+        maxlength="2"
+        required
+      />
+      <br />
       <br />
       <input type="submit" name="upload" value="올리기" />
     </form>

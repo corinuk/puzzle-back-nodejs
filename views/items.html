@@ -4,14 +4,20 @@
   <div>
     <input hidden value="{{id[loop.index0]}}" />
     <input hidden value="{{createdAt[loop.index0]}}" />
-    <div id="id">id : {{id[loop.index0]}}</div>
+    <div id="id">id : <span class="id">{{id[loop.index0]}}</span></div>
     <div>메뉴 : {{menu[loop.index0]}}</div>
     <div>가게 : {{place[loop.index0]}}</div>
     <div>주소 : {{address[loop.index0]}}</div>
     <div>원가 : {{price[loop.index0]}}</div>
     <div>할인가 : {{saledPrice[loop.index0]}}</div>
-    <div>마감시간 : {{deadline[loop.index0]}}</div>
-    <div>createdAt : {{createdAt[loop.index0]}}</div>
+    <div>
+      <span>마감시간 : </span>
+      <span class="am-pm">{{ampm[loop.index0]}}</span>&nbsp;
+      <span class="deadline-hours">{{deadlineHours[loop.index0]}}</span>
+      <span>:</span>
+      <span class="deadline-minutes">{{deadlineMinutes[loop.index0]}}</span>
+    </div>
+    <div>createdAt : <span class="ca">{{createdAt[loop.index0]}}</span></div>
   </div>
   <div class="delete-div">
     <input type="button" value="delete" class="delete-btn" />
@@ -20,6 +26,7 @@
 <br />
 {% endfor %} {% endblock %} {% block script %}
 <script>
+  //버튼 클릭 시 삭제
   const deleteBtn = document.querySelectorAll(".delete-btn");
   const confirmDel = (event) => {
     const id = event.target.parentNode.parentNode.children[1].children[0].value;
@@ -32,6 +39,44 @@
   };
   deleteBtn.forEach((event) => {
     event.addEventListener("click", confirmDel);
+  });
+
+  //마감시간 일치 시 삭제
+  const ampm = document.querySelectorAll(".am-pm");
+  const deadlineHours = document.querySelectorAll(".deadline-hours");
+  const deadlineMinutes = document.querySelectorAll(".deadline-minutes");
+  const id = document.querySelectorAll(".id");
+  const ca = document.querySelectorAll(".ca");
+  const time = new Date();
+  const currentHours = time.getHours();
+  const currentMinutes = time.getMinutes();
+  let itemsArr = [];
+  for (let i = 0; i < ampm.length; i++) {
+    itemsArr = [
+      ...itemsArr,
+      {
+        ampm: ampm[i].innerHTML,
+        deadlineHours: deadlineHours[i].innerHTML,
+        deadlineMinutes: deadlineMinutes[i].innerHTML,
+        id: id[i].innerHTML,
+        ca: ca[i].innerHTML,
+      },
+    ];
+  }
+  itemsArr.forEach((event) => {
+    if (
+      event.ampm === "오전" &&
+      Number(event.deadlineHours) === currentHours &&
+      Number(event.deadlineMinutes) === currentMinutes
+    ) {
+      location.href = `/delete-item?id=${event.id}&ca=${event.ca}`;
+    } else if (
+      event.ampm === "오후" &&
+      Number(event.deadlineHours) + 12 === currentHours &&
+      Number(event.deadlineMinutes) === currentMinutes
+    ) {
+      location.href = `/delete-item?id=${event.id}&ca=${event.ca}`;
+    }
   });
 </script>
 {% endblock %}

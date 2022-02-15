@@ -38,7 +38,9 @@ app.get("/", async (req, res) => {
   let address = [];
   let price = [];
   let saledPrice = [];
-  let deadline = [];
+  let ampm = [];
+  let deadlineHours = [];
+  let deadlineMinutes = [];
   let createdAt = [];
 
   // 위의 변수에 item 담기
@@ -50,7 +52,9 @@ app.get("/", async (req, res) => {
     address.push(foodArr[i].address);
     price.push(foodArr[i].price);
     saledPrice.push(foodArr[i].saledPrice);
-    deadline.push(foodArr[i].deadline);
+    ampm.push(foodArr[i].ampm);
+    deadlineHours.push(foodArr[i].deadlineHours);
+    deadlineMinutes.push(foodArr[i].deadlineMinutes);
     createdAt.push(foodArr[i].createdAt);
   }
 
@@ -62,7 +66,9 @@ app.get("/", async (req, res) => {
     address,
     price,
     saledPrice,
-    deadline,
+    ampm,
+    deadlineHours,
+    deadlineMinutes,
     createdAt,
   });
 });

@@ -21,7 +21,10 @@ app.post("/", upload.single("foodImg"), async (req, res) => {
     const address = req.body.address;
     const price = req.body.price;
     const saledPrice = req.body.saledPrice;
-    const deadline = req.body.deadline;
+    // const deadline = req.body.deadline;
+    const ampm = req.body.ampm;
+    const deadlineHours = req.body.deadlineHours;
+    const deadlineMinutes = req.body.deadlineMinutes;
     const createdAt = Date.now();
     const fileRef = ref(storageService, `/images/${createdAt}`);
     const convert_to_dataURL = `data:image/jpeg;base64,${foodImg}`;
@@ -39,7 +42,9 @@ app.post("/", upload.single("foodImg"), async (req, res) => {
       address,
       price,
       saledPrice,
-      deadline,
+      ampm,
+      deadlineHours,
+      deadlineMinutes,
       createdAt,
     });
     res.redirect("/");
