@@ -47,9 +47,6 @@
   const deadlineMinutes = document.querySelectorAll(".deadline-minutes");
   const id = document.querySelectorAll(".id");
   const ca = document.querySelectorAll(".ca");
-  const time = new Date();
-  const currentHours = time.getHours();
-  const currentMinutes = time.getMinutes();
   let itemsArr = [];
   for (let i = 0; i < ampm.length; i++) {
     itemsArr = [
@@ -63,20 +60,29 @@
       },
     ];
   }
-  itemsArr.forEach((event) => {
-    if (
-      event.ampm === "오전" &&
-      Number(event.deadlineHours) === currentHours &&
-      Number(event.deadlineMinutes) === currentMinutes
-    ) {
-      location.href = `/delete-item?id=${event.id}&ca=${event.ca}`;
-    } else if (
-      event.ampm === "오후" &&
-      Number(event.deadlineHours) + 12 === currentHours &&
-      Number(event.deadlineMinutes) === currentMinutes
-    ) {
-      location.href = `/delete-item?id=${event.id}&ca=${event.ca}`;
-    }
-  });
+  const checkDeadline = () => {
+    const time = new Date();
+    const currentHours = time.getHours();
+    const currentMinutes = time.getMinutes();
+    itemsArr.forEach((event) => {
+      const { ampm, deadlineHours, deadlineMinutes, id, ca } = event;
+      if (
+        ampm === "오전" &&
+        Number(deadlineHours) === currentHours &&
+        Number(deadlineMinutes) === currentMinutes
+      ) {
+        location.href = `/delete-item?id=${id}&ca=${ca}`;
+      } else if (
+        ampm === "오후" &&
+        Number(deadlineHours) + 12 === currentHours &&
+        Number(deadlineMinutes) === currentMinutes
+      ) {
+        location.href = `/delete-item?id=${id}&ca=${ca}`;
+      }
+    });
+  };
+  setInterval(() => {
+    checkDeadline();
+  }, 5000);
 </script>
 {% endblock %}
