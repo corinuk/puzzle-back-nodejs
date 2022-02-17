@@ -38,6 +38,7 @@ app.get("/", async (req, res) => {
   let address = [];
   let price = [];
   let saledPrice = [];
+  let count = [];
   let ampm = [];
   let deadlineHours = [];
   let deadlineMinutes = [];
@@ -52,6 +53,7 @@ app.get("/", async (req, res) => {
     address.push(foodArr[i].address);
     price.push(foodArr[i].price);
     saledPrice.push(foodArr[i].saledPrice);
+    count.push(foodArr[i].count);
     ampm.push(foodArr[i].ampm);
     deadlineHours.push(foodArr[i].deadlineHours);
     deadlineMinutes.push(foodArr[i].deadlineMinutes);
@@ -66,6 +68,7 @@ app.get("/", async (req, res) => {
     address,
     price,
     saledPrice,
+    count,
     ampm,
     deadlineHours,
     deadlineMinutes,

@@ -21,7 +21,7 @@ app.post("/", upload.single("foodImg"), async (req, res) => {
     const address = req.body.address;
     const price = req.body.price;
     const saledPrice = req.body.saledPrice;
-    // const deadline = req.body.deadline;
+    const count = req.body.count;
     const ampm = req.body.ampm;
     const deadlineHours = req.body.deadlineHours;
     const deadlineMinutes = req.body.deadlineMinutes;
@@ -42,6 +42,7 @@ app.post("/", upload.single("foodImg"), async (req, res) => {
       address,
       price,
       saledPrice,
+      count,
       ampm,
       deadlineHours,
       deadlineMinutes,
