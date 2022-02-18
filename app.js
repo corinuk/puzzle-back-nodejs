@@ -8,11 +8,10 @@ const { dbService, storageService } = require("./fb");
 const { query, doc, deleteDoc } = require("firebase/firestore");
 const { ref, deleteObject } = require("firebase/storage");
 
-//**************** 아래 주석은 삭제 노노!!! ****************
+// 아래 주석은 삭제 노노!!!
 // const { dbService, storageService } = require("./fb");
 // const {addDoc,collection,query,onSnapshot,orderBy,doc,deleteDoc,getDocs,limit} = require("firebase/firestore");
 // const {getDownloadURL,ref,uploadString,deleteObject} = require("firebase/storage");
-//*****************************************************
 
 //초기 세팅
 dotenv.config();
